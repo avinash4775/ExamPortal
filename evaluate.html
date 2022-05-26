@@ -1,0 +1,147 @@
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(120deg, #6ddfe9, #6ddfe9);
+  }
+</style>
+<body>
+    <div class="container">
+      <div class="d-flex justify-content-center"ng-show="isLoading1==true">
+        <br>
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+     <div class="container" ng-show="status4">
+       <br>
+        <nav class="navbar navbar-light bg-info ">
+            <span class="navbar-brand text-light">{{title1}}</span>
+          </nav> 
+          
+          <div class="container bg-light">
+            <form>
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Sno.</th>
+                      <th scope="col">Student Id</th>
+                      <th scope="col">Student Name</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Mobile</th>
+                      <th scope="col" class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                 
+                  <tbody>
+                    <div class="container">
+                    <tr ng-repeat="(key1,value1) in submission">
+                      <th scope="row" class="serial-number">{{$index+1}}</th>
+                      <td>{{value1.student_id}}</td>
+                      <td>{{value1.first_name}}</td>
+                      <td>{{value1.username}}</td>
+                      <td>{{value1.mobile_no}}</td>
+                      <td ng-show="{{value1.status}}==true" class="text-center"><button type="button" class="btn btn-outline-success" ng-click="viewAnswer(key1)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" ng-show="viewansw"></span>
+                      </button> </td>
+                      <td ng-show="{{value1.status}}==evaluated" class="text-center"><button type="button" class="btn btn-outline-info" ng-click="">Re-Evaluate
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" ng-show="viewansw"></span>
+                      </button> </td>
+                      <td ng-show="{{value1.status}}==false" style="color:#dc3545" class="text-center"> ABSENT </td>
+                    </tr>
+                   </div>
+                  </tbody>
+                </table>
+            </form>
+            </div>
+     </div>
+      <br>
+        <nav class="navbar navbar-light bg-info ">
+            <span class="navbar-brand text-light">EXAMS</span>
+          </nav>
+          
+<div class="container bg-light">
+      <form>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Sno.</th>
+                <th scope="col">Course</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Exam Title</th>
+                <th scope="col">Start Exam</th>
+                <th scope="col">End Exam</th>
+                <th scope="col">View Form</th>
+              </tr>
+            </thead>
+            <div ng-show="isLoading==true">
+                <span style="color: brown;">Loading Please Wait...</span>
+            </div>
+            <tbody>
+              <div class="container" >
+              <tr ng-repeat="z in exams">
+                <th scope="row" class="serial-number">{{$index+1}}</th>
+                <td>{{z.course}}</td>
+                <td>{{z.subject}}</td>
+                <td>{{z.exam_title}}</td>
+                <td>{{z.start_date}} {{z.start_time}}</td>
+                <td>{{z.end_date}} {{z.end_time}}</td>
+                <td><button type="button" class="btn btn-primary" ng-click="evaluate(z.id)">Evaluate
+                  
+                </button></td>
+              </tr>
+             </div>
+            </tbody>
+          </table>
+      </form>
+    </div>
+    </div>
+   <br>
+     <div class="container">
+      <div class="d-flex justify-content-center"ng-show="isLoading2==true">
+        <br>
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-info ">
+      <span class="navbar-brand text-light">EVALUATED EXAM</span>
+    </nav>
+    <div class="container bg-light">
+      <form>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Sno.</th>
+                <th scope="col">Course</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Exam Title</th>
+                <th scope="col">Start Exam</th>
+                <th scope="col">End Exam</th>
+                <th scope="col">View Form</th>
+              </tr>
+            </thead>
+            <div ng-show="isLoading==true">
+                <span style="color: brown;">Loading Please Wait...</span>
+            </div>
+            <tbody>
+              <div class="container" >
+              <tr ng-repeat="z in evaluated_exam">
+                <th scope="row" class="serial-number">{{$index+1}}</th>
+                <td>{{z.course}}</td>
+                <td>{{z.subject}}</td>
+                <td>{{z.exam_title}}</td>
+                <td>{{z.start_date}} {{z.start_time}}</td>
+                <td>{{z.end_date}} {{z.end_time}}</td>
+                <td><button type="button" class="btn btn-primary" ng-click="evaluate(z.id)">Re-Evaluate
+                  
+                </button></td>
+              </tr>
+             </div>
+            </tbody>
+          </table>
+          </form>
+      </div>
+     </div>
+</body>

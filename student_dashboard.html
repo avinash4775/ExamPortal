@@ -1,0 +1,136 @@
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(120deg, #6ddfe9, #6ddfe9);
+  }
+</style>
+<body>
+    <div class="container">
+      <br>
+      <div class="text-right" style="color: rgb(6, 146, 240);"><h6> Welcome {{vidyarthi}}</h6></div>
+      <div class="text-right">
+        <button type="button" class=" btn btn-outline-primary" ui-sref="logout">LOG OUT</button>
+      </div>
+      <br>
+        <div>
+            <nav class="navbar navbar-light bg-info ">
+                <span class="navbar-brand text-light">LIVE EXAM</span>
+                <div class="spinner-border text-light" role="status" ng-show="statuslive">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </nav>
+              
+    <div class="container bg-light">
+          <form>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sno.</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Exam Title</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  <div class="container" >
+                  <tr ng-repeat="z in live">
+                    <th scope="row" class="serial-number">{{$index+1}}</th>
+                    <td>{{z.course}}</td>
+                    <td>{{z.subject}}</td>
+                    <td>{{z.exam_title}}</td>
+                    <td>{{z.start_date}} {{z.start_time}}</td>
+                    <td>{{z.end_date}} {{z.end_time}}</td>
+                    <td><button type="button" class="btn btn-primary" ng-click="getquestion(z.id,$index)">Attempt</button></td>
+                  </tr>
+                 </div>
+                </tbody>
+              </table>
+          </form>
+        </div>
+    </div>
+
+        <br>
+            <nav class="navbar navbar-light bg-info ">
+                <span class="navbar-brand text-light">UPCOMING EXAM</span>
+                <div class="spinner-border text-light" role="status" ng-show="statusupcom">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </nav> 
+              <div class="container bg-light">
+                <form>
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Sno.</th>
+                          <th scope="col">Course</th>
+                          <th scope="col">Subject</th>
+                          <th scope="col">Exam Title</th>
+                          <th scope="col">Start Date</th>
+                          <th scope="col">End Date</th>
+                          <th scope="col">Countdown</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <div class="container" >
+                        <tr ng-repeat="z in upcoming">
+                          <th scope="row" class="serial-number">{{$index+1}}</th>
+                          <td>{{z.course}}</td>
+                          <td>{{z.subject}}</td>
+                          <td>{{z.exam_title}}</td>
+                          <td>{{z.start_date}} {{z.start_time}}</td>
+                          <td>{{z.end_date}} {{z.end_time}}</td>
+                          <td>{{z.countdown}}</td>
+                        </tr>
+                       </div>
+                      </tbody>
+                    </table>
+                </form>
+                </div>
+          <br>
+         
+          <div>
+            <nav class="navbar navbar-light bg-info ">
+                <span class="navbar-brand text-light">PREVIOUS EXAM</span>
+                <div class="spinner-border text-light" role="status" ng-show="statusprev">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </nav>
+    <div class="container bg-light">
+          <form>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sno.</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Exam Title</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  <div class="container" >
+                  <tr ng-repeat="z in previous">
+                    <th scope="row" class="serial-number">{{$index+1}}</th>
+                    <td>{{z.course}}</td>
+                    <td>{{z.subject}}</td>
+                    <td>{{z.exam_title}}</td>
+                    <td>{{z.start_date}} {{z.start_time}}</td>
+                    <td>{{z.end_date}} {{z.end_time}}</td>
+                  </tr>
+                 </div>
+                </tbody>
+              </table>
+          </form>
+        </div>
+    </div>
+
+</div>
+</body>

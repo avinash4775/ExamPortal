@@ -1,0 +1,239 @@
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(120deg, #6ddfe9, #6ddfe9);
+  }
+</style>
+<body>
+    <br>
+<div class="container text-center ">
+    <nav class="navbar navbar-light bg-info ">
+        <span class="navbar-brand text-light">FORM</span>
+      </nav>
+      <div class="container bg-light">
+      <form>
+          <br>
+          <div class="container justify-content-center">
+        <div class="form-group row">
+            <div class="col-sm-3">
+          <label for="course" class="col-form-label">COURSE</label>
+        </div>  
+        <div class="col-sm-3 justify-content-center">    
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+           ng-click="course()" aria-expanded="false" style="width:15.4rem;background-color:rgb(255, 255, 255)" >
+          {{dropdown1}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width:15.4rem">
+            <div class="container" ng-repeat="(key1,value1) in Courses">
+           <ul >
+            
+            <a class="dropdown-item" ng-click="branch(value1.S_No);select(value1.value)" >{{value1.value}}</a>
+          
+          </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-sm-3">
+          <label for="branch" class="col-form-label">BRANCH</label>
+        </div>
+        <div class="col-sm-3 justify-content-center">    
+          <div class="dropdown">
+            <button class="btn dropdown-toggle"  type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-expanded="false" style="width:15.4rem ; background-color:white" >
+              {{dropdown2}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width:15.4rem " >
+              <div class="container" ng-repeat="(key1,value1) in Branches">
+              <ul >
+                <a class="dropdown-item"ng-click="select2(value1.value)" >{{value1.value}}</a>
+              </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+         </div>
+        <div class="form-group row">
+            <div class="col-sm-3">
+          <label for="inputEmail3" class="col-form-label">START DATE</label>
+        </div>
+          <div class="col-sm-3">
+            <input type="date" class="form-control" id="inputEmail3" ng-model="startdate" required>
+          </div>
+       
+        <div class="col-sm-3">
+          <label for="inputPassword3" class="col-form-label">END DATE</label>
+        </div>
+          <div class="col-sm-3">
+            <input type="date" class="form-control" id="inputPassword3"ng-model="enddate" required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-3">
+          <label class="col-form-label">START TIME</label>
+        </div>
+          <div class="col-sm-3">
+            <input type="time" class="form-control" ng-model="starttime" required> 
+          </div>
+        <div class="col-sm-3">
+          <label for="inputPassword3" class="col-form-label">END TIME</label>
+        </div>
+          <div class="col-sm-3">
+            <input type="time" class="form-control" id="inputPassword3" ng-model="endtime" required>
+          </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-3">
+          <label for="inputEmail3" class="col-form-label">EXAM TITLE</label>
+        </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" id="inputEmail3" placeholder="Exam Title" ng-model="examtitle" required>
+          </div>
+
+          <div class="col-sm-3">
+        <label for="inputEmail3" class="col-form-label">SUBJECT</label>
+      </div>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="inputEmail3" placeholder="SUBJECT" ng-model="subject" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-3">
+      <label for="inputEmail" class="col-form-label">MAX MARKS</label>
+    </div>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="inputEmail" placeholder="MAX MARKS" ng-model="maxmarks" required>
+      </div>
+   </div>
+        <div class="form-group row">
+          <div class="col-justify-content-center">
+            <br>
+            <button type="submit" class="btn text-light btn-info" ng-click="createForm()">CREATE FORM</button>
+          </div>
+        </div>
+        <br>
+    </div>
+      </form>
+      </div>
+    </div>
+    <br>
+    <div class="container"> 
+      <button type="button" class="btn btn-outline-primary "ng-click="show()">View Previous</button>
+      <div class="d-flex justify-content-center"ng-show="isLoading==true">
+        <br>
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+      </div>
+      <br>
+          <!-- EXAM FORM -->
+      <div class="container" ng-show="status1">
+        <nav class="navbar navbar-light bg-info ">
+          <span class="navbar-brand text-light">CREATE FORMS</span>
+        </nav>
+        <div class="container bg-light">
+        <br>
+        <div class="container">
+          <h5 class="container text-center text-secondary">{{dropdown1}} - {{subject}}</h5>
+          <h5 class="container text-center text-secondary">{{examtitle}}</h5>
+          <hr style="height:4px">
+         </div> 
+            <div ng-repeat="question in Questions">
+              <div class="text-center">
+                <div class="form-group row">
+                  <div class="col-sm-1">
+              <span class="serial-number">{{ $index + 1 }}.</span>
+              </div>
+              <!-- <input ng-model="question.quest" class="users-container-inputs-text" type="text" placeholder="Question" required/> -->
+              <div class="col-sm-7">
+            
+                <input type="text" class="form-control" id="validationCustom03" ng-model="question.quest" placeholder="Enter Question" required>
+              </div>
+              <div class="col-sm-2">
+            
+                <input type="text" class="form-control" id="validationCustom03" ng-model="question.max_marks" placeholder="Max Mark" required>
+              </div>
+              <div class="col-sm-2">
+              <button type="button" class="btn btn-outline-danger"  ng-click="removeQuestion(question)"><i class="fas fa-trash-alt"></i>
+
+              </button>
+            </div>
+            </div>
+            </div>
+              
+            
+              <br>
+            </div>
+           <div class="container justify-content-center">
+             <br>
+          <button type="button"  ng-click="addQuestion()" class="add-user btn btn-success"> +Add Question</button> 
+        </div>
+        <div class="form-group row">
+          <div class="container text-center">
+            <br>
+            <button type="submit" class="btn text-light btn-info" ng-click="createForm1()">SUBMIT
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" ng-show="submitexam"></span>
+            </button>
+            <br>
+            <br>
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+     <!-- PREVIOUS FORM -->
+
+     <div class="container" ng-show="status">
+
+        <nav class="navbar navbar-light bg-info ">
+            <span class="navbar-brand text-light">PREVIOUS FORMS</span>
+            
+           
+          </nav>
+<div class="container bg-light">
+      <form>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Sno.</th>
+                <th scope="col">Course</th>
+                <th scope="col">Branch</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Exam Title</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete Exam</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div class="container" >
+              <tr ng-repeat="z in forms">
+                <th scope="row" class="serial-number">{{$index+1}}</th>
+                <td>{{z.course}}</td>
+                <td>{{z.branch}}</td>
+                <td>{{z.subject}}</td>
+                <td>{{z.exam_title}}</td>
+                <td>{{z.start_date}}</td>
+                <td>{{z.start_time}}</td>
+                <td>{{z.end_time}}</td>
+                <td><button type="button" class="btn btn-outline-success" ng-click="edit(z.id)">View</button></td>
+                <td><button type="button" class="btn btn-danger" ng-click="delete(z.id)">Delete</button></td>
+              </tr>
+             </div>
+            </tbody>
+          </table>
+      </form>
+    </div>
+    </div>
+ 
+</body>

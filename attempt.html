@@ -1,0 +1,47 @@
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(120deg, #6ddfe9, #9de97a00);
+  }
+</style>
+
+<body>
+  <div class="container">
+    <form class="">
+      <br>
+      <h2 style="text-align: center">Question Paper</h2>
+      <div class="container text-right">
+        Maximum Marks: {{max_mark}} 
+      </div>
+      <div class="container text-right">
+        <h6>Time Left: </h6>
+        <p style="color: red;">{{timer}}</p>
+      </div>
+      <div class="container">
+      <div class="container " ng-repeat="(key,value) in Questions">
+        <div class="form-row ">
+          <div class="col-sm-10">
+         <label> Q{{$index+1}}. {{value.quest}}</label>
+        </div>
+        <div class="col-sm-2">
+          <label>{{value.max_marks}} marks</label>
+        </div>
+       </div>
+         <input type="text" class="form-control" ng-model="value.ans"  required/> <br />
+        
+       
+      </div>
+    </div>
+      <div class="container text-center">
+        <button type="button" class="btn btn-primary"  ng-click="Submittest()"style="width: 150px">
+          Submit
+        </button>
+        <br>
+      </div>
+      <br>
+    </form>
+    <br>
+  </div>
+</body>

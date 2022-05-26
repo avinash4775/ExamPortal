@@ -1,0 +1,36 @@
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(120deg, #6ddfe9, #9de97a00);
+  }
+</style>
+ <body>
+    <br /><br /><br />
+    <div class="container">
+      <form>
+        <div ng-repeat="(key,value) in sets">
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              placeholder="Leave a comment here"
+              id="floatingTextarea"
+              ng-model="value.quest"
+              required
+            >
+{{value.quest}}</textarea
+            >
+            <label for="floatingTextarea">Q.{{$index+1}}</label>
+          </div>
+          <br /><br />
+        </div>
+        <div class="container text-center">
+        <button type="submit" class="btn btn-outline-primary" ng-click="update()">
+          Update
+        </button>
+      </div>
+      </form>
+    </div>
+    
+  </body>

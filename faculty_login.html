@@ -1,0 +1,30 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    <div class="centre" >
+     <h1>Faculty Login</h1>
+     <form name="myform" onsubmit="return false">
+
+     <div class="txt_field">
+         <input type="text" name="uname"  id="user" ng-model="username"  ng-required="true" placeholder="Username" required> 
+        
+     </div>
+     <div class="txt_field" >
+        <input type="password" name="password" id="pass" ng-model="password" ng-required="true" placeholder="Password" required>
+
+    </div>
+    <div class="text-center">
+    <!-- <button type="button" class="btn btn-outline-info"ng-click="facultyLogin()">Login</button> -->
+    
+      <button class="btn btn-outline-info" type="button" ng-click="facultyLogin()">Login
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" ng-show="isLoading==true"></span>
+      </button>   
+</div>
+    </form>
+  
+   <br>
+    </div>
+
+    
+</body>
